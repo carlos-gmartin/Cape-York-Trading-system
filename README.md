@@ -4,9 +4,9 @@ A sypnoptic project at UEA where we are desigining a trading network and system 
 This project is working with the Enginners without borders project.
 
 Member include:
-Carlos
-Daniel
-Nischal
-Liam
-Amin
+-Carlos
+-Daniel
+-Nischal
+-Liam
+-Amin
 
