@@ -4,7 +4,7 @@ const router = express.Router()
 
 // this is going to be the very first page displayed when the user access website
 router.get('/', ((req, res) => {
-    res.render('index',{layout:false})
+    res.render('dashboard')
 }))
 
 module.exports = router
