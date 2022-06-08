@@ -1,50 +1,61 @@
 
-var tableData = ["hello", "world", "!23", "hello"];
+var tableData = [["Book", "Trade", "Basically a bunch of books", "Michael", "Facebook"],["Train", "$100","A toy train set","Leo","Watsapp"]];
 
 function addTable(userRequest) {
-  // if(userRequest[0] != undefined){
-    // for (var index = 0; index < userRequest.length; index++){
-      var userID = userRequest[0];
-      var carParkName = userRequest[1];
-      var positionX = userRequest[2];
-      var positionY = userRequest[3];
-      var timing = userRequest[4];
+    for (var index = 0; index < userRequest.length; index++){
+      var item_name = userRequest[index][0];
+      var item_cost = userRequest[index][1];
+      var item_description = userRequest[index][2];
+      var vendor_name = userRequest[index][3];
+      var vendor_contact = userRequest[index][4];
     
       var myTableDiv = document.getElementById("myDynamicTable");
-      
-      var tableBody = document.createElement('tbody');
-      myTableDiv.appendChild(tableBody);
-      var tr = document.createElement('tr');
-      tableBody.appendChild(tr);
-         
-      for (var i = 0; i < 4; i++){
 
-          var userTag = document.createElement('td');
-          userTag.appendChild(document.createTextNode(userID));
-          var carTag = document.createElement('td');
-          carTag.appendChild(document.createTextNode(carParkName));
-          var xTag = document.createElement('td');
-          xTag.appendChild(document.createTextNode(positionX));
-          var yTag = document.createElement('td');
-          yTag.appendChild(document.createTextNode(positionY));
-          var timingTag = document.createElement('td');
-          timingTag.appendChild(document.createTextNode(timing));
-          
-          tr.appendChild(userTag);
-          tr.appendChild(xTag);
-          tr.appendChild(yTag);
-          tr.appendChild(timingTag);
-      }
-      myTableDiv.appendChild(tableBody);
-  //}
-  // else{
-  //   var myTableDiv = document.getElementById("myDynamicTable");
-  //   var tableBody = document.createElement('tbody');
-  //   myTableDiv.appendChild(tableBody);
-  //   var tr = document.createElement('tr');
-  //   var defaultTag = document.createElement('td');
-  //   defaultTag.appendChild(document.createTextNode("No request made yet."));
-  // }
+      var tr = document.createElement('tr');
+      myTableDiv.appendChild(tr);
+         
+      var itemNameTag = document.createElement('td');
+      itemNameTag.appendChild(document.createTextNode(item_name));
+      var itemCostTag = document.createElement('td');
+      itemCostTag.appendChild(document.createTextNode(item_cost));
+      var itemDescTag = document.createElement('td');
+      itemDescTag.appendChild(document.createTextNode(item_description));
+      var vendorNameTag = document.createElement('td');
+      vendorNameTag.appendChild(document.createTextNode(vendor_name));
+      var vendorContactTag = document.createElement('td');
+      vendorContactTag.appendChild(document.createTextNode(vendor_contact));
+      
+      tr.appendChild(itemNameTag);
+      tr.appendChild(itemCostTag);
+      tr.appendChild(itemDescTag);
+      tr.appendChild(vendorNameTag);
+      tr.appendChild(vendorContactTag);
+
+      myTableDiv.appendChild(tr);
+    }
+}
+addTable(tableData);
+
+var community = ["Cape york", "Sidney", "Melbourne"];
+
+function addCommunities(communityData){
+  for (let i = 0; i < communityData.length; i++) {
+    
+    var communityName = communityData[i];
+
+    var communityTagLi = document.createElement('li');
+    var communityTagA = document.createElement('a');
+
+    communityTagA.className = "dropdown-item";
+    communityTagA.href = "#";
+    communityTagA.innerHTML = communityName;
+
+    communityTagLi.appendChild(communityTagA);
+
+    var dropDownList = document.getElementById("dropDownList");
+
+    dropDownList.appendChild(communityTagLi);
+  }
 }
 
-addTable(tableData);
+addCommunities(community);
