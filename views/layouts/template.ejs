@@ -6,15 +6,43 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Time-Table</title>
-    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <header>        
+            <nav class="navbar navbar-light navbar-expand-md bg-light justify-content-center">
+                <a href="/" class="navbar-brand mr-0">Cape York Trading</a>
+                <button class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#collapsingNavbar2">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse justify-content-between align-items-center w-100" id="collapsingNavbar2">
+                    <ul class="navbar-nav mx-auto text-center">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">Home</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">Trade</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Inventory</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav flex-row justify-content-center flex-nowrap">
+                        <li class="nav-item"><a class="nav-link" href="">Log out</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
 
-        <header>This is where the header will be</header>
-        <br>
-        <%- body%>
-        <br>
-        <footer>This where the footer will be</footer>
-
+    <br>
+    <%- body%>
+    <br>
+    
+        <footer>
+            This where the footer will be
+        </footer>
     </body>
 </html>
