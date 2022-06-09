@@ -7,7 +7,7 @@ const {db} = require('../database')
 
 // this is going to be the very first page displayed when the user access website
 router.get('/', ((req, res) => {
-    res.render('register',{layout:false})
+
 }))
 
 router.post('/',[
