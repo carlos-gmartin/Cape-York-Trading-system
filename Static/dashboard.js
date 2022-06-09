@@ -1,5 +1,5 @@
-
-var tableData = [["Book", "Trade", "Basically a bunch of books", "Michael", "Facebook"],["Train", "$100","A toy train set","Leo","Watsapp"]];
+// Testing Array.
+var tableData = [["helicopter","plane"],["Book", "Trade", "Basically a bunch of books", "Michael", "Facebook"],["Train", "$100","A toy train set","Leo","Watsapp"]];
 
 function addTable(userRequest) {
     for (var index = 0; index < userRequest.length; index++){
@@ -36,7 +36,8 @@ function addTable(userRequest) {
 }
 addTable(tableData);
 
-var community = ["Cape york", "Sidney", "Melbourne"];
+// Testing community array.
+var community = ["Calvin","Victoria","Cape york", "Sidney", "Melbourne"];
 
 function addCommunities(communityData){
   for (let i = 0; i < communityData.length; i++) {
@@ -57,5 +58,4 @@ function addCommunities(communityData){
     dropDownList.appendChild(communityTagLi);
   }
 }
-
 addCommunities(community);
