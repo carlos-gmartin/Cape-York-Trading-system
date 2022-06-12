@@ -1,7 +1,8 @@
 // Testing Array.
-var tableData = [["helicopter","plane"],["Book", "Trade", "Basically a bunch of books", "Michael", "Facebook"],["Train", "$100","A toy train set","Leo","Watsapp"]];
+//var tableData = [["helicopter","plane"],["Book", "Trade", "Basically a bunch of books", "Michael", "Facebook"],["Train", "$100","A toy train set","Leo","Watsapp"]];
 
-function addTable(userRequest) {
+function addTable(userRequest) {  
+  document.getElementById("myDynamicTable").innerHTML = '';
     for (var index = 0; index < userRequest.length; index++){
       var item_name = userRequest[index][0];
       var item_cost = userRequest[index][1];
@@ -34,10 +35,19 @@ function addTable(userRequest) {
       myTableDiv.appendChild(tr);
     }
 }
-addTable(tableData);
+//addTable(tableData);
 
 // Testing community array.
-var community = ["Calvin","Victoria","Cape york", "Sidney", "Melbourne"];
+//var community = ["Calvin","Victoria","Cape york", "Sidney", "Melbourne"];
+
+$.ajax({
+  type: "GET",
+  url: "/dashboard/getCommunities",
+  dataType: "json",
+  success: function(res) {
+    addCommunities(res);
+  }
+})
 
 function addCommunities(communityData){
   for (let i = 0; i < communityData.length; i++) {
@@ -50,7 +60,20 @@ function addCommunities(communityData){
     communityTagA.className = "dropdown-item";
     communityTagA.href = "#";
     communityTagA.innerHTML = communityName;
-
+    communityTagA.addEventListener("click", function(event) {
+      var NameOfCommunity = event.target.innerHTML;
+      $.ajax({
+        type: "POST",
+        url: "/dashboard/getItems",
+        dataType: "json",
+        data: {
+          Community: NameOfCommunity
+        },
+        success: function(res) {
+          addTable(res);
+        }
+      })
+    })
     communityTagLi.appendChild(communityTagA);
 
     var dropDownList = document.getElementById("dropDownList");
@@ -58,4 +81,4 @@ function addCommunities(communityData){
     dropDownList.appendChild(communityTagLi);
   }
 }
-addCommunities(community);
+//addCommunities(community);
