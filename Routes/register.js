@@ -53,4 +53,10 @@ router.post('/',[
 
 })
 
+router.post('/getItems', (req, res) => {
+    db.all('SELECT * FROM items WHERE Community = ?',[req.body.Community], (err, results) => {
+        res.send(results);
+    });
+});
+
 module.exports = router
