@@ -1,6 +1,8 @@
 // Testing Array.
 //var tableData = [["helicopter","plane"],["Book", "Trade", "Basically a bunch of books", "Michael", "Facebook"],["Train", "$100","A toy train set","Leo","Watsapp"]];
 
+var NameOfCommunity = '';
+
 function addTable(userRequest) {  
   document.getElementById("myDynamicTable").innerHTML = '';
     for (var index = 0; index < userRequest.length; index++){
@@ -25,12 +27,75 @@ function addTable(userRequest) {
       vendorNameTag.appendChild(document.createTextNode(vendor_name));
       var vendorContactTag = document.createElement('td');
       vendorContactTag.appendChild(document.createTextNode(vendor_contact));
+      var buyButton = document.createElement('button');
+      buyButton.innerHTML = 'Buy';
+      buyButton.addEventListener("click", function(event) {
+        console.log(event.target.parentNode.firstChild.innerHTML);
+        $.ajax({
+          type: "POST",
+          url: "/dashboard/buyItem",
+          dataType: "json",
+          data: {
+            Name: event.target.parentNode.childNodes[0].innerHTML,
+            ItemCost: event.target.parentNode.childNodes[1].innerHTML,
+            ItemDescription: event.target.parentNode.childNodes[2].innerHTML,
+            VendorName: event.target.parentNode.childNodes[3].innerHTML,
+            Contact: event.target.parentNode.childNodes[4].innerHTML,
+            Community: NameOfCommunity
+          },
+          success: (
+            console.log("Bought " + event.target.parentNode.childNodes[0].innerHTML)
+          )
+        })
+
+      })
+
       
       tr.appendChild(itemNameTag);
       tr.appendChild(itemCostTag);
       tr.appendChild(itemDescTag);
       tr.appendChild(vendorNameTag);
       tr.appendChild(vendorContactTag);
+      tr.appendChild(buyButton);
+
+      myTableDiv.appendChild(tr);
+    }
+}
+
+function addTransactionTable(userRequest) {  
+  document.getElementById("myTransactionDynamicTable").innerHTML = '';
+    for (var index = 0; index < userRequest.length; index++){
+      var item_name = userRequest[index][0];
+      var item_cost = userRequest[index][1];
+      var item_description = userRequest[index][2];
+      var vendor_name = userRequest[index][3];
+      var vendor_contact = userRequest[index][4];
+      var buyer = userRequest[index][5];
+    
+      var myTableDiv = document.getElementById("myTransactionDynamicTable");
+
+      var tr = document.createElement('tr');
+      myTableDiv.appendChild(tr);
+         
+      var itemNameTag = document.createElement('td');
+      itemNameTag.appendChild(document.createTextNode(item_name));
+      var itemCostTag = document.createElement('td');
+      itemCostTag.appendChild(document.createTextNode(item_cost));
+      var itemDescTag = document.createElement('td');
+      itemDescTag.appendChild(document.createTextNode(item_description));
+      var vendorNameTag = document.createElement('td');
+      vendorNameTag.appendChild(document.createTextNode(vendor_name));
+      var vendorContactTag = document.createElement('td');
+      vendorContactTag.appendChild(document.createTextNode(vendor_contact));
+      var buyerTag = document.createElement('td');
+      buyerTag.appendChild(document.createTextNode(buyer));
+      
+      tr.appendChild(itemNameTag);
+      tr.appendChild(itemCostTag);
+      tr.appendChild(itemDescTag);
+      tr.appendChild(vendorNameTag);
+      tr.appendChild(vendorContactTag);
+      tr.appendChild(buyerTag);
 
       myTableDiv.appendChild(tr);
     }
@@ -61,7 +126,18 @@ function addCommunities(communityData){
     communityTagA.href = "#";
     communityTagA.innerHTML = communityName;
     communityTagA.addEventListener("click", function(event) {
-      var NameOfCommunity = event.target.innerHTML;
+      NameOfCommunity = event.target.innerHTML;
+      $.ajax({
+        type: "POST",
+        url: "/dashboard/getTransactions",
+        dataType: "json",
+        data: {
+          Community: NameOfCommunity
+        },
+        success: function(res) {
+          addTransactionTable(res);
+        }
+      })
       $.ajax({
         type: "POST",
         url: "/dashboard/getItems",

@@ -24,6 +24,12 @@ const db = new sqlite3.Database('./database.db',sqlite3.OPEN_READWRITE,(err)=>{
   //  'Create table items(Id INTEGER PRIMARY KEY AUTOINCREMENT, Community Varchar(25), ItemName Varchar(25) Not Null, ItemCost Varchar(25), ItemDescription Varchar(50), VendorName Varchar(25) Not Null, Contact Varchar(25));'
   //); 
 
+  //Table already exists
+  
+  //db.run(
+  //  'Create table transactions(Id INTEGER PRIMARY KEY AUTOINCREMENT,Buyer Varchar(25), Community Varchar(25), ItemName Varchar(25) Not Null, ItemCost Varchar(25), ItemDescription Varchar(50), VendorName Varchar(25) Not Null, Contact Varchar(25));'
+  //); 
+
 //db.run('INSERT into items VALUES(?,?,?,?,?,?,?)', [,'Calvin','Plane', '$1000', 'Turbo Prop Plane', 'Bob', 'Facebook'])
 
 //db.run('INSERT into communities VALUES(?,?,?)',[,'Calvin','Australia']);
@@ -49,6 +55,13 @@ db.all(`
 
 db.all(`
     SELECT * from users
+`,(err,results)=>{
+    if(err) {return console.error(err.message)}
+    console.log(results)
+})
+
+db.all(`
+    SELECT * from transactions
 `,(err,results)=>{
     if(err) {return console.error(err.message)}
     console.log(results)
