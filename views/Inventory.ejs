@@ -1,0 +1,70 @@
+<!-- Main code for dashboard table -->
+<link rel="stylesheet" href="style.css">
+<div class="main">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Inventory</h1>z
+        </div>
+    </div>
+</div>
+
+    <div class="card-deck">
+        <div class="col-10">
+            <div class="card">
+                <div class="card-body">
+                        <div class="container-fluid">
+                            <table class="table table-striped">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Item Name</th>
+                                        <th>Item cost</th>
+                                        <th>Item description</th>
+                                        <th>Vendor name</th>
+                                        <th>Contact</th>
+                                        <th>Add</th>
+                                        <th>Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="myDynamicTable"></tbody>
+                            </table>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-2">  
+            <div class="card">
+                <div class="card-body">Hello world</div>
+            </div>
+        </div> 
+    </div>
+
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h3>Update Inventory</h3>
+        </div>
+
+        <div class="form-container">
+            <form>
+                <label for="item_name">Item name:</label><br>
+                <input type="text"><br>
+                <label for="item_price">Item price:</label><br>
+                <input type="text"><br>
+                <label for="item_description">Item description:</label><br>
+                <input type="text"><br>
+                <label for="vendor_name">Vendor name</label><br>
+                <input type="text"><br>
+                <label for="contact">Contact method</label><br>
+                <input type="radio" id="html" name="fav_language" value="HTML">
+                <label for="html">WhatsApp</label><br>
+                <input type="radio" id="css" name="fav_language" value="CSS">
+                <label for="css">Facebook</label><br>
+                <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+                <label for="javascript">Instagram</label><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+
+    <script src="dashboard.js" defer></script>
+</div>
