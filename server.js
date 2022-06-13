@@ -13,6 +13,7 @@ initializePassport(passport)
 const dashboardRoute = require('./Routes/dashboard')
 const regRoute = require('./Routes/register');
 const logRoute = require('./Routes/login');
+const inventoryRoute = require('./Routes/inventory');
 
 app.set('view engine','ejs')
 app.set('views',__dirname + "/views")
@@ -37,6 +38,7 @@ app.use(flash())
 app.use('/', logRoute);
 app.use('/dashboard',dashboardRoute)
 app.use('/register',regRoute)
+app.use('/inventory', inventoryRoute)
 
 
 app.listen( process.env.WEB_PORT||4000)
