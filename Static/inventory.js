@@ -1,4 +1,3 @@
-
 var tableData = [["Book", "Trade", "Basically a bunch of books", "Michael", "Facebook"],["Train", "$100","A toy train set","Leo","Watsapp"]];
 
 function addTable(userRequest) {
@@ -47,27 +46,3 @@ function addTable(userRequest) {
     }
 }
 addTable(tableData);
-
-var community = ["Cape york", "Sidney", "Melbourne"];
-
-function addCommunities(communityData){
-  for (let i = 0; i < communityData.length; i++) {
-    
-    var communityName = communityData[i];
-
-    var communityTagLi = document.createElement('li');
-    var communityTagA = document.createElement('a');
-
-    communityTagA.className = "dropdown-item";
-    communityTagA.href = "#";
-    communityTagA.innerHTML = communityName;
-
-    communityTagLi.appendChild(communityTagA);
-
-    var dropDownList = document.getElementById("dropDownList");
-
-    dropDownList.appendChild(communityTagLi);
-  }
-}
-
-addCommunities(community);
