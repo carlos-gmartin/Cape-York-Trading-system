@@ -39,8 +39,9 @@ router.post('/',[
                 databaseValid.push({message:"Email already exists"})
                 res.render('Register',{layout:false,alert:databaseValid})
         }else{
-            db.run(`Insert into users Values(?,?,?,?,?)`,
-            [,req.body.fName,req.body.lName,req.body.email,regHashedPassword],
+            console.log(req.body);
+            db.run(`Insert into users Values(?,?,?,?,?,?)`,
+            [,req.body.Communities,req.body.fName,req.body.lName,req.body.email,regHashedPassword],
             (err,results)=>{
                 if(err) {return console.error(err.message)}
                 console.log('Data has been inserted ')
