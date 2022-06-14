@@ -14,10 +14,10 @@ router.get('/', ((req, res) => {
 }))
 
 router.post('/addItem', [
-    check("ItemName").isAlpha('en-GB', {ignore: '\s'}).trim().withMessage("Invalid First Name"),
-    check("ItemPrice").isAlpha('en-GB', {ignore: '\s'}).trim().withMessage("Invalid Last Name"),
-    check("ItemDescription").isAlpha('en-GB', {ignore: '\s'}).trim().withMessage("Invalid Last Name"),
-    check("VendorName").isAlpha('en-GB', {ignore: '\s'}).trim().withMessage("Invalid Last Name"),
+    check("ItemName").isAlpha('en-GB', {ignore: '\s'}).trim().withMessage("Invalid Item Name"),
+    check("ItemPrice").isAlpha('en-GB', {ignore: '\s'}).trim().withMessage("Invalid Item Price"),
+    check("ItemDescription").isAlpha('en-GB', {ignore: '\s'}).trim().withMessage("Invalid Item Description"),
+    check("VendorName").isAlpha('en-GB', {ignore: '\s'}).trim().withMessage("Invalid Vendor Name"),
 ], (req, res) => {
     const error = validationResult(req);
     let alert = error.array();

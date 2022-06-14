@@ -53,4 +53,14 @@ router.post('/',[
 
 })
 
+router.get('/getCommunities',(req, res) => {
+    db.all('SELECT Name FROM communities', (err, results) => {
+        var nameArray = [];
+        for(var i = 0; i < results.length; i++) {
+            nameArray.push(results[i].Name);
+        }
+        res.send(nameArray);
+    });
+});
+
 module.exports = router

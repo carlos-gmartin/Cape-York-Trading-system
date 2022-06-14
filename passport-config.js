@@ -63,7 +63,7 @@ function initialize(passport) {
                 return done(err);
             }
             console.log(`ID is ${results[0].Id}`);
-            return done(null, results[0].Id);
+            return done(null, results[0]);
         });
     });
 }
