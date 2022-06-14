@@ -14,16 +14,18 @@ router.get('/', ((req, res) => {
 }))
 
 router.post('/addItem', [
-    check("ItemName").isAlpha('en-GB', {ignore: '\s'}).trim().withMessage("Invalid Item Name"),
-    check("ItemPrice").isAlpha('en-GB', {ignore: '\s'}).trim().withMessage("Invalid Item Price"),
-    check("ItemDescription").isAlpha('en-GB', {ignore: '\s'}).trim().withMessage("Invalid Item Description"),
-    check("VendorName").isAlpha('en-GB', {ignore: '\s'}).trim().withMessage("Invalid Vendor Name"),
+    check("ItemName").isAlphanumeric().trim().withMessage("Invalid Item Name"),
+    check("ItemPrice").isAlphanumeric().trim().withMessage("Invalid Item Price"),
+    check("ItemDescription").isAlphanumeric().trim().withMessage("Invalid Item Description"),
+    check("VendorName").isAlphanumeric().trim().withMessage("Invalid Vendor Name"),
 ], (req, res) => {
     const error = validationResult(req);
     let alert = error.array();
     if (!error.isEmpty()) {
+        console.log("ERROR");
         console.log(alert);
     } else {
+        console.log("Stored item correctly" + "\n");
         db.all('SELECT * FROM users WHERE Email = ?', [req.user.Email],(err, results) => {
             console.log(results);
         })

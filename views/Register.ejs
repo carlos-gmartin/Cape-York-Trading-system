@@ -37,4 +37,10 @@
 
 </form>
 
+<%if(typeof alert != "undefined"){%>
+    <%alert.forEach((error)=>{%>
+        <%=error.msg || error.message%><br>
+    <%})%>
+<%}%>
+
 <script src="../register.js" defer></script>

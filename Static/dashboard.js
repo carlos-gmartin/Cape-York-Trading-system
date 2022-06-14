@@ -4,6 +4,9 @@
 var NameOfCommunity = '';
 
 function addTable(userRequest) {  
+
+  console.log(userRequest);
+
   document.getElementById("myDynamicTable").innerHTML = '';
     for (var index = 0; index < userRequest.length; index++){
       var item_name = userRequest[index][0];
@@ -100,7 +103,7 @@ function addTransactionTable(userRequest) {
       myTableDiv.appendChild(tr);
     }
 }
-//addTable(tableData);
+addTable(tableData);
 
 // Testing community array.
 //var community = ["Calvin","Victoria","Cape york", "Sidney", "Melbourne"];
