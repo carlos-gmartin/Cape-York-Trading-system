@@ -24,8 +24,11 @@ router.post('/addItem', [
     if (!error.isEmpty()) {
         console.log(alert);
     } else {
+        console.log(req.body);
         db.all('SELECT * FROM users WHERE Email = ?', [req.user.Email],(err, results) => {
             console.log(results);
+            db.run('INSERT into items VALUES(?,?,?,?,?,?,?)', [,results[0].Community, req.body.ItemName, req.body.ItemPrice, req.body.ItemDescription, req.body.VendorName, req.body.contact_method]);
+            res.render('inventory');
         })
     }
 })
