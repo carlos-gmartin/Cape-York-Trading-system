@@ -53,4 +53,9 @@ router.get('/getInventory', (req,res) => {
     });
 })
 
+router.post('/removeItem', (req, res) => {
+    console.log(req.body.Name);
+    db.run('DELETE FROM items WHERE ItemName = ?', [req.body.Name]);
+})
+
 module.exports = router

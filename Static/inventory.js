@@ -41,6 +41,20 @@ function addTable(userRequest) {
       var removeButton = document.createElement('button');
       removeButton.innerHTML = "-";
       removeButton.className = "remove-button";
+      removeButton.addEventListener("click", function(event) {
+        console.log(event.target.parentNode.parentNode.firstChild.innerHTML);
+        $.ajax({
+          type: "POST",
+          url: "/inventory/removeItem",
+          dataType: "json",
+          data: {
+            Name: event.target.parentNode.parentNode.firstChild.innerHTML
+          },
+          success: (
+            console.log("Removed " + event.target.parentNode.parentNode.firstChild.innerHTML)
+          )
+        })
+      })
       removeTag.appendChild(removeButton);
       
       tr.appendChild(itemNameTag);
