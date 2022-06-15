@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
 tbody {
     display: table-row-group;
     vertical-align: middle;

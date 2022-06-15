@@ -1,26 +1,76 @@
-<form action="/register" method="POST">
-    <label for="firstName">First Name</label>
-    <input type="text" id="firstName" name="fName" required><br>
-
-    <label for="lastName">Last Name</label>
-    <input type="text" id="lastName" name="lName" required><br>
-
-    <label for="email">Email </label>
-    <input type="text" id="email" name="email" required><br>
-
-    <label for="password">Password </label>
-    <input type="text" id="password" name="password" required><br>
-
-    <label for="confirmPassword">Confirm Password</label>
-    <input type="text" id="confirmPassword" name="conPassword" required><br>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <!-- JavaScript for jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../register.js" defer></script>
+    <link rel="stylesheet" href="loginAndRegister.css">
+</head>
     
-    <input type="checkbox" id="agree" required>
-    <label for="agree">I agree with the terms and conditions of this website</label><br>
+<body>
+    <main class="form-signin w-15 m-auto">
+        <form action="/register" method="POST">
+            <div class="text-center">
+                <h1>Cape York TN</h1>
+                <h3 class="h3 mb-3 fw-normal">Please register an account.</h3>
+            </div>
+            
+            <div class="form-floating">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" class="form-control" id="floatingInput" name="fName" required>
+            </div>
     
+            <div class="form-floating">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" class="form-control" id="floatingInput" name="lName" required>
+            </div>
+    
+            <div class="form-floating">
+                <label for="email">Email </label>
+                <input type="text" id="email" class="form-control" id="floatingInput" name="email" required>
+            </div>
+    
+            <div class="form-floating">
+                <label for="password">Password</label>
+                <input type="text" id="password" class="form-control" id="floatingInput" name="password" required>
+            </div>
+    
+            <div class="form-floating">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="text" id="confirmPassword" class="form-control" id="floatingInput" name="conPassword" required>
+            </div>
+    
+            <div class="form-floating">
+                <label for="dropdownMenuButton1">Select a community:</label>
+                <select class="browser-default custom-select" name="Communities" id="Communities"></select>
+            </div>
+    
+            <div class="form-floating text-center">
+                <input type="checkbox" id="agree" required>
+                <label for="Communities">I agree with the terms and conditions of this website</label>
+            </div>
+    
+            <div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+            </div>
+    
+            <div class="text-center">
+                <a href="/">Already have an account</a>
+                <br>
+                <small class="mt-5 mb-3 text-muted">@ Cape York Project - Daniel, Nischal, Liam, Amin, Carlos.</small>
+            </div>
 
-    <button type="submit">Submit</button><br>
+            <div class="text-center">
+                <%if(typeof alert != "undefined"){%>
+                    <%alert.forEach((error)=>{%>
+                        <small><%=error.msg || error.message%></small><br>
+                    <%})%>
+                <%}%>
+            </div>
 
-    <a href="/login/">Already have an account</a>
-
-
-</form>
+        </form>
+    </main>
+</body>
+</html>

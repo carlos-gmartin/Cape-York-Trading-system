@@ -26,7 +26,7 @@ router.post('/',[
     const error = validationResult(req);
     let alert = error.array()
     if (!error.isEmpty()){
-        res.render('Register',{layout:false,alert: alert})
+        res.render('Register', {layout:false, alert: alert})
     }
     else{
         const regHashedPassword = await bcrypt.hash(req.body.password,10);
@@ -37,20 +37,30 @@ router.post('/',[
         if(results.length > 0){
             let databaseValid = []
                 databaseValid.push({message:"Email already exists"})
-                res.render('Register',{layout:false,alert:databaseValid})
-        }else{
-            db.run(`Insert into users Values(?,?,?,?,?)`,
-            [Date.now(),req.body.fName,req.body.lName,req.body.email,regHashedPassword],
+                res.render('Register',{layout:false, alert : databaseValid})
+        }
+        else{
+            console.log(req.body);
+            db.run(`Insert into users Values(?,?,?,?,?,?)`,
+            [,req.body.Communities,req.body.fName,req.body.lName,req.body.email,regHashedPassword],
             (err,results)=>{
                 if(err) {return console.error(err.message)}
                 console.log('Data has been inserted ')
             })
+            res.redirect("/");
         }
     })
     }
-  
-    
-
 })
+
+router.get('/getCommunities',(req, res) => {
+    db.all('SELECT Name FROM communities', (err, results) => {
+        var nameArray = [];
+        for(var i = 0; i < results.length; i++) {
+            nameArray.push(results[i].Name);
+        }
+        res.send(nameArray);
+    });
+});
 
 module.exports = router

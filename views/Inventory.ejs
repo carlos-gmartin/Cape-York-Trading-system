@@ -1,0 +1,71 @@
+<!-- Main code for dashboard table -->
+<link rel="stylesheet" href="style.css">
+<div class="main">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Inventory</h1>
+        </div>
+    </div>
+</div>
+
+    <div class="card-deck">
+        <div class="col-10">
+            <div class="card">
+                <div class="card-body">
+                        <div class="container-fluid">
+                            <table class="table table-striped">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Item Name</th>
+                                        <th>Item cost</th>
+                                        <th>Item description</th>
+                                        <th>Vendor name</th>
+                                        <th>Contact</th>
+                                        <th>Add</th>
+                                        <th>Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="myDynamicTable"></tbody>
+                            </table>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-2">  
+            <div class="card">
+                <div class="card-body">Hello world</div>
+            </div>
+        </div> 
+    </div>
+
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h3>Update Inventory</h3>
+        </div>
+
+        <div class="form-container">
+            <form action="/inventory/addItem" method="POST">
+                <label for="item_name">Item name:</label><br>
+                <input type="text" name="ItemName"><br>
+                <label for="item_price">Item price:</label><br>
+                <input type="text" name="ItemPrice"><br>
+                <label for="item_description">Item description:</label><br>
+                <input type="text" name="ItemDescription"><br>
+                <label for="vendor_name">Vendor name</label><br>
+                <input type="text" name="VendorName"><br>
+                <label for="contact">Contact method</label><br>
+                <input type="radio" id="WhatsApp" name="contact_method" value="WhatsApp">
+                <label for="WhatsApp">WhatsApp</label><br>
+                <input type="radio" id="Facebook" name="contact_method" value="Facebook">
+                <label for="Facebook">Facebook</label><br>
+                <input type="radio" id="Instagram" name="contact_method" value="Instagram">
+                <label for="Instagram">Instagram</label><br>
+                <input type="submit" value="Submit">
+                <input type="hidden" value="<%=useremail%>">
+            </form>
+        </div>
+    </div>
+
+    <script src="inventory.js" defer></script>
+</div>
