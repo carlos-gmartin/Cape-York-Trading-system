@@ -26,7 +26,7 @@ router.post('/',[
     const error = validationResult(req);
     let alert = error.array()
     if (!error.isEmpty()){
-        res.redirect('/', {layout:false, alert: alert})
+        res.render('Register', {layout:false, alert: alert})
     }
     else{
         const regHashedPassword = await bcrypt.hash(req.body.password,10);
@@ -37,7 +37,7 @@ router.post('/',[
         if(results.length > 0){
             let databaseValid = []
                 databaseValid.push({message:"Email already exists"})
-                res.redirect('/register',{layout:false, alert : databaseValid})
+                res.render('Register',{layout:false, alert : databaseValid})
         }
         else{
             console.log(req.body);
