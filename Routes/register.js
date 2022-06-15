@@ -47,7 +47,7 @@ router.post('/',[
                 if(err) {return console.error(err.message)}
                 console.log('Data has been inserted ')
             })
-            res.redirect("/login");
+            res.redirect("/");
         }
     })
     }

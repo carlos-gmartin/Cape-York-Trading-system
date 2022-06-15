@@ -34,38 +34,38 @@ const db = new sqlite3.Database('./database.db',sqlite3.OPEN_READWRITE,(err)=>{
 
 //db.run('INSERT into communities VALUES(?,?,?)',[,'Calvin','Australia']);
 
-db.all(`
-    SELECT * FROM communities
-`,(err,results)=>{
-    if(err) {return console.error(err.message)}
-    console.log(results)
-    for(var i = 0; i < results.length; i++) {
-        console.log(results[i].Name);
-    }
-})
+// db.all(`
+//     SELECT * FROM communities
+// `,(err,results)=>{
+//     if(err) {return console.error(err.message)}
+//     console.log(results)
+//     for(var i = 0; i < results.length; i++) {
+//         console.log(results[i].Name);
+//     }
+// })
 
-db.all(`
-    SELECT * from items
-`,(err,results)=>{
-    if(err) {return console.error(err.message)}
-    console.log(results)
-})
+// db.all(`
+//     SELECT * from items
+// `,(err,results)=>{
+//     if(err) {return console.error(err.message)}
+//     console.log(results)
+// })
 
 
 
-db.all(`
-    SELECT * from users
-`,(err,results)=>{
-    if(err) {return console.error(err.message)}
-    console.log(results)
-})
+// db.all(`
+//     SELECT * from users
+// `,(err,results)=>{
+//     if(err) {return console.error(err.message)}
+//     console.log(results)
+// })
 
-db.all(`
-    SELECT * from transactions
-`,(err,results)=>{
-    if(err) {return console.error(err.message)}
-    console.log(results)
-})
+// db.all(`
+//     SELECT * from transactions
+// `,(err,results)=>{
+//     if(err) {return console.error(err.message)}
+//     console.log(results)
+// })
 
 
 module.exports = {db}
