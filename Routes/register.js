@@ -50,9 +50,6 @@ router.post('/',[
         }
     })
     }
-  
-    
-
 })
 
 router.get('/getCommunities',(req, res) => {

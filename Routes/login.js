@@ -19,4 +19,5 @@ router.post('/login',passport.authenticate('local',{
     failureFlash: true
 
 }));
+
 module.exports = router;
