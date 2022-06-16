@@ -5,30 +5,27 @@ const db = new sqlite3.Database('./database.db',sqlite3.OPEN_READWRITE,(err)=>{
     console.log("connection successful")
 })
 
-//db.run(
+// db.run(
 //    'Create TABLE communities(Id INTEGER PRIMARY KEY AUTOINCREMENT, Name Varchar(25) Not Null, Location Varchar(25) Not Null);'
-//)
+// )
 
-
- //Table already exists
+// //Table already exists
  
-//db.run(
+// db.run(
 //   'Create table users(Id INTEGER PRIMARY KEY AUTOINCREMENT,Community Varchar(25), FirstName Varchar(25) Not Null, LastName varchar(25) Not Null, Email varchar(50) Not Null, Password varchar(50) Not Null );'
-//)
+// )
 
-//db.run('DROP TABLE users');
+// //Table already exists
 
-  //Table already exists
-  
-  //db.run(
-  //  'Create table items(Id INTEGER PRIMARY KEY AUTOINCREMENT, Community Varchar(25), ItemName Varchar(25) Not Null, ItemCost Varchar(25), ItemDescription Varchar(50), VendorName Varchar(25) Not Null, Contact Varchar(25));'
-  //); 
+// db.run(
+//  'Create table items(Id INTEGER PRIMARY KEY AUTOINCREMENT, Community Varchar(25), ItemName Varchar(25) Not Null, ItemCost Varchar(25), ItemDescription Varchar(50), VendorName Varchar(25) Not Null, Contact Varchar(25));'
+// ); 
 
-  //Table already exists
-  
-  //db.run(
-  //  'Create table transactions(Id INTEGER PRIMARY KEY AUTOINCREMENT,Buyer Varchar(25), Community Varchar(25), ItemName Varchar(25) Not Null, ItemCost Varchar(25), ItemDescription Varchar(50), VendorName Varchar(25) Not Null, Contact Varchar(25));'
-  //); 
+// //Table already exists
+
+// db.run(
+//  'Create table transactions(Id INTEGER PRIMARY KEY AUTOINCREMENT,Buyer Varchar(25), Community Varchar(25), ItemName Varchar(25) Not Null, ItemCost Varchar(25), ItemDescription Varchar(50), VendorName Varchar(25) Not Null, Contact Varchar(25));'
+// ); 
 
 //db.run('INSERT into items VALUES(?,?,?,?,?,?,?)', [,'Calvin','Plane', '$1000', 'Turbo Prop Plane', 'Bob', 'Facebook'])
 
@@ -66,6 +63,14 @@ const db = new sqlite3.Database('./database.db',sqlite3.OPEN_READWRITE,(err)=>{
 //     if(err) {return console.error(err.message)}
 //     console.log(results)
 // })
+
+
+// DANGEROUS DO NOT USE UNLESS RESETING SYSTEM.
+
+// Delete tables.
+// db.run('DROP TABLE transactions');
+// db.run('DROP TABLE communities');
+// db.run('DROP TABLE users');
 
 
 module.exports = {db}

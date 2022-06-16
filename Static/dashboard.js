@@ -103,7 +103,7 @@ function addTransactionTable(userRequest) {
       myTableDiv.appendChild(tr);
     }
 }
-addTable(tableData);
+//addTable(tableData);
 
 // Testing community array.
 //var community = ["Calvin","Victoria","Cape york", "Sidney", "Melbourne"];
@@ -113,6 +113,7 @@ $.ajax({
   url: "/dashboard/getCommunities",
   dataType: "json",
   success: function(res) {
+    console.log(res);
     addCommunities(res);
   }
 })
