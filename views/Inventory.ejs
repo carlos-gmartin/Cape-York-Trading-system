@@ -34,7 +34,7 @@
 
         <div class="col-2">  
             <div class="card">
-                <div class="card-body">Hello world</div>
+                <div class="card-body">This is your current inventory. These are all products that you have added to the system.</div>
             </div>
         </div> 
     </div>
@@ -62,8 +62,15 @@
                 <input type="radio" id="Instagram" name="contact_method" value="Instagram">
                 <label for="Instagram">Instagram</label><br>
                 <input type="submit" value="Submit">
-                <input type="hidden" value="<%=useremail%>">
+                <!-- <input type="hidden" value=""> -->
             </form>
+            <div class="text-center">
+                <%if(typeof alert != "undefined"){%>
+                    <%alert.forEach((error)=>{%>
+                        <small><%=error.msg || error.message%></small><br>
+                    <%})%>
+                <%}%>
+            </div>
         </div>
     </div>
 
