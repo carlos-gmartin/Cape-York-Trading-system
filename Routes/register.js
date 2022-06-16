@@ -26,7 +26,7 @@ router.post('/',[
     const error = validationResult(req);
     let alert = error.array()
     if (!error.isEmpty()){
-        res.render('Register',{layout:false,alert: alert})
+        res.render('Register', {layout:false, alert: alert})
     }
     else{
         const regHashedPassword = await bcrypt.hash(req.body.password,10);
@@ -37,8 +37,9 @@ router.post('/',[
         if(results.length > 0){
             let databaseValid = []
                 databaseValid.push({message:"Email already exists"})
-                res.render('Register',{layout:false,alert:databaseValid})
-        }else{
+                res.render('Register',{layout:false, alert : databaseValid})
+        }
+        else{
             console.log(req.body);
             db.run(`Insert into users Values(?,?,?,?,?,?)`,
             [,req.body.Communities,req.body.fName,req.body.lName,req.body.email,regHashedPassword],
@@ -50,9 +51,6 @@ router.post('/',[
         }
     })
     }
-  
-    
-
 })
 
 router.get('/getCommunities',(req, res) => {

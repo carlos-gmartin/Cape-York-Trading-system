@@ -40,5 +40,12 @@ app.use('/dashboard',dashboardRoute)
 app.use('/register',regRoute)
 app.use('/inventory', inventoryRoute)
 
+app.get('/logout', function(req, res, next) {
+    req.logout(function(err) {
+      if (err) { return next(err); }
+      res.redirect('/');
+    });
+});
 
-app.listen( process.env.WEB_PORT||4000)
+
+app.listen(process.env.WEB_PORT||4000)
