@@ -8,13 +8,6 @@
 </head>
 
 <body>
-    <ul>
-    <%if(messages.error){%>
-        <li>
-           <%=messages.error%> 
-        </li>
-    <%}%>
-    </ul>
     <main class="form-signin w-100 m-auto">
         <form action="/login" method="POST">
             <h1>Cape York TN</h1>
@@ -36,13 +29,9 @@
             <small class="mt-5 mb-3 text-muted">@ Cape York Project - Daniel, Nischal, Liam, Amin, Carlos.</small>
 
             <div class="text-center">
-                <ul>
                 <%if(messages.error){%>
-                    <li>
                        <small><%=messages.error%></small>
-                    </li>
                 <%}%>
-                </ul>
             </div>
         </form>
     </main>

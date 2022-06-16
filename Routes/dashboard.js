@@ -53,13 +53,14 @@ router.post('/getTransactions',checkNotAuthenticated,(req,res) => {
 })
 
 router.post('/buyItem',checkNotAuthenticated,(req, res) => {
-    sess = req.session;
-    db.run('INSERT into transactions VALUES(?,?,?,?,?,?,?,?)',[,sess.email, req.body.Community, req.body.Name, req.body.ItemCost, req.body.ItemDescription, req.body.VendorName, req.body.Contact], (err) => {
-        if(err) {
-            return console.error(err.message);
-        }
+    db.all('SELECT * FROM users WHERE Email = ?', [req.user.Email],(err, results) => {
+        db.run('INSERT into transactions VALUES(?,?,?,?,?,?,?,?)',[,results[0].FirstName, req.body.Community, req.body.Name, req.body.ItemCost, req.body.ItemDescription, req.body.VendorName, req.body.Contact], (err) => {
+            if(err) {
+                return console.error(err.message);
+            }
+        });
+        db.run('DELETE FROM items WHERE ItemName = ?',[req.body.Name]);
     });
-    db.run('DELETE FROM items WHERE ItemName = ?',[req.body.Name]);
 })
 
 //if user isn't logged in redirect them to login page
