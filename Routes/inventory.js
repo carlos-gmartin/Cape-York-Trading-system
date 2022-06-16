@@ -25,11 +25,38 @@ router.post('/addItem', [
         console.log("ERROR");
         console.log(alert);
     } else {
-        console.log("Stored item correctly" + "\n");
+        console.log(req.body);
         db.all('SELECT * FROM users WHERE Email = ?', [req.user.Email],(err, results) => {
             console.log(results);
+            db.run('INSERT into items VALUES(?,?,?,?,?,?,?)', [,results[0].Community, req.body.ItemName, req.body.ItemPrice, req.body.ItemDescription, req.body.VendorName, req.body.contact_method]);
+            res.render('inventory');
         })
     }
+})
+
+router.get('/getInventory', (req,res) => {
+    db.all('SELECT * FROM users WHERE Email = ?', [req.user.Email],(err, results) => {
+        console.log(results);
+        db.all('SELECT * FROM items WHERE VendorName = ?', [results[0].FirstName], (err, VendorResults) => {
+            console.log(VendorResults);
+            var ArrayOfItems = [];
+            for(var i = 0; i < VendorResults.length; i++) {
+                var SingleItem = [];
+                SingleItem.push(VendorResults[i].ItemName);
+                SingleItem.push(VendorResults[i].ItemCost);
+                SingleItem.push(VendorResults[i].ItemDescription);
+                SingleItem.push(VendorResults[i].VendorName);
+                SingleItem.push(VendorResults[i].Contact);
+                ArrayOfItems.push(SingleItem);
+            }
+            res.send(ArrayOfItems);
+        })
+    });
+})
+
+router.post('/removeItem', (req, res) => {
+    console.log(req.body.Name);
+    db.run('DELETE FROM items WHERE ItemName = ?', [req.body.Name]);
 })
 
 module.exports = router

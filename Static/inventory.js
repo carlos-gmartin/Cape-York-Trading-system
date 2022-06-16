@@ -1,5 +1,14 @@
 var tableData = [["Book", "Trade", "Basically a bunch of books", "Michael", "Facebook"],["Train", "$100","A toy train set","Leo","Watsapp"]];
 
+$.ajax({
+  type: "GET",
+  url: "/inventory/getInventory",
+  dataType: "json",
+  success: function(res) {
+    addTable(res);
+  }
+})
+
 function addTable(userRequest) {
     for (var index = 0; index < userRequest.length; index++){
       var item_name = userRequest[index][0];
@@ -32,6 +41,20 @@ function addTable(userRequest) {
       var removeButton = document.createElement('button');
       removeButton.innerHTML = "-";
       removeButton.className = "remove-button";
+      removeButton.addEventListener("click", function(event) {
+        console.log(event.target.parentNode.parentNode.firstChild.innerHTML);
+        $.ajax({
+          type: "POST",
+          url: "/inventory/removeItem",
+          dataType: "json",
+          data: {
+            Name: event.target.parentNode.parentNode.firstChild.innerHTML
+          },
+          success: (
+            console.log("Removed " + event.target.parentNode.parentNode.firstChild.innerHTML)
+          )
+        })
+      })
       removeTag.appendChild(removeButton);
       
       tr.appendChild(itemNameTag);
@@ -45,4 +68,3 @@ function addTable(userRequest) {
       myTableDiv.appendChild(tr);
     }
 }
-addTable(tableData);
