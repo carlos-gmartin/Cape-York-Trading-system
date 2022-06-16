@@ -3,7 +3,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const {db} = require("./database");
 const bcrypt = require("bcrypt");
 
-// creating function which check for user email and compare password , if eveything correct log user in other wise displays error message
+// Creating function which check for user email and compare password , if eveything correct log user in other wise displays error message
 function initialize(passport) {
     console.log("Initialized");
 

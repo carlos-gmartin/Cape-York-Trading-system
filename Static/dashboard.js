@@ -3,23 +3,28 @@
 
 var NameOfCommunity = '';
 
+// Table used to add all of the items from the database in a interactive way. Updates on refresh.
 function addTable(userRequest) {  
 
   console.log(userRequest);
 
   document.getElementById("myDynamicTable").innerHTML = '';
     for (var index = 0; index < userRequest.length; index++){
+      // Gathers the items from the database and stores them as var.
       var item_name = userRequest[index][0];
       var item_cost = userRequest[index][1];
       var item_description = userRequest[index][2];
       var vendor_name = userRequest[index][3];
       var vendor_contact = userRequest[index][4];
     
+      // Finds the table id.
       var myTableDiv = document.getElementById("myDynamicTable");
 
+      // Creates new table row tags.
       var tr = document.createElement('tr');
       myTableDiv.appendChild(tr);
          
+      // Inserts the table data into that row which has been created.
       var itemNameTag = document.createElement('td');
       itemNameTag.appendChild(document.createTextNode(item_name));
       var itemCostTag = document.createElement('td');
@@ -31,9 +36,11 @@ function addTable(userRequest) {
       var vendorContactTag = document.createElement('td');
       vendorContactTag.appendChild(document.createTextNode(vendor_contact));
       var buyButton = document.createElement('button');
+      // If the trader clicks on the buy button.
       buyButton.innerHTML = 'Buy';
       buyButton.addEventListener("click", function(event) {
         console.log(event.target.parentNode.firstChild.innerHTML);
+        // Send the pressed on item to the past transactions table.
         $.ajax({
           type: "POST",
           url: "/dashboard/buyItem",
@@ -53,7 +60,7 @@ function addTable(userRequest) {
 
       })
 
-      
+      // Append the tag to the table in HTML.
       tr.appendChild(itemNameTag);
       tr.appendChild(itemCostTag);
       tr.appendChild(itemDescTag);
@@ -66,6 +73,7 @@ function addTable(userRequest) {
 }
 
 function addTransactionTable(userRequest) {  
+  // Transaction table works the same as the dashboard table. Using the same method.
   document.getElementById("myTransactionDynamicTable").innerHTML = '';
     for (var index = 0; index < userRequest.length; index++){
       var item_name = userRequest[index][0];
@@ -108,6 +116,7 @@ function addTransactionTable(userRequest) {
 // Testing community array.
 //var community = ["Calvin","Victoria","Cape york", "Sidney", "Melbourne"];
 
+// Gets all of the current databases stored on the server.
 $.ajax({
   type: "GET",
   url: "/dashboard/getCommunities",

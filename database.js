@@ -1,3 +1,12 @@
+/*
+*   FileName: database.js
+*   Description: This uses SQLITE which means it can run SQL commands on your local machine, without needing a database server.
+*   To remove old tables we just need to drop them by using the 'DROP TABLE' command.
+*   Adding a community can be done by: 'INSERT INTO communities VALUES()'.
+*   All of these commands require db.run so that SQLlite can understand how to run them.
+*   
+*/
+
 const sqlite3 = require('sqlite3').verbose()
 
 const db = new sqlite3.Database('./database.db',sqlite3.OPEN_READWRITE,(err)=>{

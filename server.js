@@ -1,3 +1,12 @@
+/*
+*  FileName: server.js
+*  Group number: 50
+*  Members: Daniel, Nischal, Liam, Amin, Carlos.
+*  Description: server.js is used to run all of the routes which are used to host the websites pages.
+*  It also adds additional requirements for the server to run. Pre running the server you will need these
+*  node modules installed or working correctly.
+*/
+
 require("dotenv").config();
 const express = require('express');
 const app = express();
@@ -35,6 +44,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
 
+// Redirect the browser from the server to the routes folder.
 app.use('/', logRoute);
 app.use('/dashboard',dashboardRoute)
 app.use('/register',regRoute)
